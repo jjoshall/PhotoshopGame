@@ -7,24 +7,24 @@
             "id": "e2040785-4bba-45ec-abd9-b9a4dc9c9459",
             "actions": [
                 {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "945fdfa9-081a-4e84-a2db-5524c60d05f3",
-                    "expectedControlType": "",
+                    "name": "Shoot",
+                    "type": "Value",
+                    "id": "ea5e8297-1b04-4dd2-a6e2-0fe3ff73c691",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "404f06d7-6c50-434b-b066-9f93ebe90d70",
-                    "path": "<Mouse>/leftButton",
+                    "id": "0508a03c-bbf1-47aa-a114-7ca52ebb8c27",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
