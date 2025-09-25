@@ -44,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
             // Clamp the launch force
             Vector2 clampedForce = Vector2.ClampMagnitude(launchDir * forceMultiplier, maxLaunchForce);
 
+            // Reset velo so new shot overrides old shot
+            rb.linearVelocity = Vector2.zero;
+
             // Apply force to the Rigidbody2D
             rb.AddForce(clampedForce, ForceMode2D.Impulse);
 
