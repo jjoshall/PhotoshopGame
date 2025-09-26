@@ -1336,7 +1336,7 @@ MonoBehaviour:
   player: {fileID: 1997005714}
   segmentCount: 50
   segmentSpacing: 0.1
-  previewFraction: 0.25
+  previewFraction: 0.15
 --- !u!120 &1479057275
 LineRenderer:
   serializedVersion: 2
@@ -1363,7 +1363,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9e01cc5a0a81db34bb09ead609b13693, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1390,7 +1390,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5
+    widthMultiplier: 0.15
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1403,6 +1403,15 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.47136214
+        value: 0.47179484
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1439,7 +1448,7 @@ LineRenderer:
     numCornerVertices: 90
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -1614,7 +1623,7 @@ Transform:
   m_GameObject: {fileID: 1997005709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6, y: -3.1, z: 0}
+  m_LocalPosition: {x: -5.9, y: -4.1, z: 0}
   m_LocalScale: {x: 0.32236, y: 0.32236, z: 0.32236}
   m_ConstrainProportionsScale: 0
   m_Children:
