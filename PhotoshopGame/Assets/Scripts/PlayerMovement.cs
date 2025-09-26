@@ -23,15 +23,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context) {
         if (context.started) {
-            Debug.Log("Mouse Down");
-
             // Record the position where the drag started
             dragStartPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             isDragging = true;
         }
         else if (context.canceled && isDragging) {
-            Debug.Log("Mouse Up");
-
             // Record mouse up position
             Vector2 dragEndPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
