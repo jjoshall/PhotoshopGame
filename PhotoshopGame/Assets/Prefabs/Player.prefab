@@ -402,7 +402,8 @@ MonoBehaviour:
   rb: {fileID: 1930587381017640640}
   mainCamera: {fileID: 0}
   timeSlowFactor: 0.3
-  timeSlowDuration: 1
+  holdDuration: 0.5
+  recoveryDuration: 2
 --- !u!114 &6189474719417026273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb50a89b5aec3440bd284271db4913a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockCollision
+  shakeDuration: 0.2
+  shakeMagnitude: 0.2
   playerRb: {fileID: 1930587381017640640}
   killJumpForce: 5
 --- !u!96 &1691148375622692555

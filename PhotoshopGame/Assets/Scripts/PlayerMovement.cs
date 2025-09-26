@@ -12,14 +12,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Camera mainCamera;
 
+    [Header("Time Slow Settings")]
+    [SerializeField] private float timeSlowFactor = 0.1f; // Factor to slow down time while dragging
+    [SerializeField] private float holdDuration = 0.5f; // How long to stay fully slowed
+    [SerializeField] private float recoveryDuration = 2f; // How long to lerp back
+
     private Vector2 dragStartPos;
     private bool isDragging = false;
     private float timeSlowTimer = 0f;
     private bool isTimeSlowed = false;
-
-    [SerializeField] private float timeSlowFactor = 0.1f; // Factor to slow down time while dragging
-    [SerializeField] private float holdDuration = 0.5f; // How long to stay fully slowed
-    [SerializeField] private float recoveryDuration = 2f; // How long to lerp back
 
     // Getters
     public Vector2 DragStartPos => dragStartPos;
