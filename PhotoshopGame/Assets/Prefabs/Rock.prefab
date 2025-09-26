@@ -215,7 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e88cff51447f8c4c8e168159a25cf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicRock
-  moveSpeed: 2
 --- !u!1 &9183860790327131056
 GameObject:
   m_ObjectHideFlags: 0

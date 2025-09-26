@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 dragStartPos;
     private bool isDragging = false;
+    private float timeSlowTimer = 0f;
+    private bool isTimeSlowed = false;
+
+    [SerializeField] private float timeSlowFactor = 0.1f; // Factor to slow down time while dragging
+    [SerializeField] private float holdDuration = 0.5f; // How long to stay fully slowed
+    [SerializeField] private float recoveryDuration = 2f; // How long to lerp back
 
     // Getters
     public Vector2 DragStartPos => dragStartPos;
@@ -21,13 +28,39 @@ public class PlayerMovement : MonoBehaviour
     public float ForceMultiplier => forceMultiplier;
     public Rigidbody2D Rb => rb;
 
+    private void Update() {
+        if (!isTimeSlowed) return;
+
+        timeSlowTimer += Time.unscaledDeltaTime;
+
+        if (timeSlowTimer < holdDuration) {
+            Time.timeScale = timeSlowFactor;
+        }
+        else if (timeSlowTimer < holdDuration + recoveryDuration) {
+            float t = (timeSlowTimer - holdDuration) / recoveryDuration;
+            Time.timeScale = Mathf.Lerp(timeSlowFactor, 1f, t);
+        }
+        else {
+            Time.timeScale = 1f;
+            isTimeSlowed = false;
+            timeSlowTimer = 0f;
+        }
+    }
+
     public void Shoot(InputAction.CallbackContext context) {
         if (context.started) {
             // Record the position where the drag started
             dragStartPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             isDragging = true;
+
+            // Slow time while dragging
+            isTimeSlowed = true;
         }
         else if (context.canceled && isDragging) {
+            Time.timeScale = 1f; // Reset time scale
+            isTimeSlowed = false;
+            timeSlowTimer = 0f; // Reset timer
+
             // Record mouse up position
             Vector2 dragEndPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
