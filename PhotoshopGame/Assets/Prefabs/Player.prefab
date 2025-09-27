@@ -401,6 +401,7 @@ MonoBehaviour:
   forceMultiplier: 1
   rb: {fileID: 1930587381017640640}
   mainCamera: {fileID: 0}
+  dashPs: {fileID: 950889375417760458, guid: 069c262f218945e45889c2c1bf752d2a, type: 3}
   timeSlowFactor: 0.3
   holdDuration: 0.5
   recoveryDuration: 2

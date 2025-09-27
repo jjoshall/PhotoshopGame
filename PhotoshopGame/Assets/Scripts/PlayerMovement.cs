@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private GameObject dashPs;
 
     [Header("Time Slow Settings")]
     [SerializeField] private float timeSlowFactor = 0.1f; // Factor to slow down time while dragging
@@ -76,6 +77,20 @@ public class PlayerMovement : MonoBehaviour
 
             // Reset velo so new shot overrides old shot
             rb.linearVelocity = Vector2.zero;
+
+            // Get angle for ps
+            float angle = Mathf.Atan2(launchDir.y, launchDir.x) * Mathf.Rad2Deg;
+
+            angle += 180f;
+
+            Quaternion particleRotation = Quaternion.Euler(-angle, 90f, 0f);
+
+            ObjectPoolManager.SpawnObject(
+                dashPs, 
+                transform.position, 
+                particleRotation, 
+                ObjectPoolManager.PoolType.ParticleSystems
+            );
 
             // Apply force to the Rigidbody2D
             rb.AddForce(clampedForce, ForceMode2D.Impulse);
