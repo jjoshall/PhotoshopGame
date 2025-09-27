@@ -6,12 +6,16 @@ public class RockCollision : MonoBehaviour
     [SerializeField] private float shakeDuration = 0.1f;
     [SerializeField] private float shakeMagnitude = 0.1f;
 
+    [Header("Hit Stop Settings")]
+    [SerializeField] private float hitStopDuration = 0.1f;
+
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private float killJumpForce = 5f;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Enemy")) {
             CameraShake.Instance.Shake(shakeDuration, shakeMagnitude);
+            HitStop.Instance.Stop(hitStopDuration);
 
             Vector2 entryDir = (transform.position - collision.transform.position).normalized;
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4452355918792121745}
   - component: {fileID: 9066149170333341541}
   - component: {fileID: 4089432515779075432}
+  - component: {fileID: 116050999250771451}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -60,3 +61,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
   rockPrefab: {fileID: 8147908731837331984, guid: 1b381ee3e46979d4ebdcc05a11867a72, type: 3}
   spawnInterval: 2
+--- !u!114 &116050999250771451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212527372645931862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54777a0383203b94eace7583957baeed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitStop
+  defaultTimeScale: 1
