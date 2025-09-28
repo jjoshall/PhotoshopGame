@@ -23,6 +23,8 @@ public class RockCollision : MonoBehaviour
             score += scorePerEnemy;
             scoreNum.text = score.ToString();
 
+            DeathTimer.Instance.AddTime();
+
             CameraShake.Instance.Shake(shakeDuration, shakeMagnitude);
             HitStop.Instance.Stop(hitStopDuration);
 
