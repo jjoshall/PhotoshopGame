@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class RockCollision : MonoBehaviour
@@ -9,11 +10,19 @@ public class RockCollision : MonoBehaviour
     [Header("Hit Stop Settings")]
     [SerializeField] private float hitStopDuration = 0.1f;
 
+    [Header("Score Settings")]
+    [SerializeField] private int scorePerEnemy = 1;
+    [SerializeField] private TextMeshProUGUI scoreNum;
+    private int score = 0;
+
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private float killJumpForce = 5f;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Enemy")) {
+            score += scorePerEnemy;
+            scoreNum.text = score.ToString();
+
             CameraShake.Instance.Shake(shakeDuration, shakeMagnitude);
             HitStop.Instance.Stop(hitStopDuration);
 
