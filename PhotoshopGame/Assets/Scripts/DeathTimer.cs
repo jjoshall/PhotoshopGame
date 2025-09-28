@@ -9,6 +9,8 @@ public class DeathTimer : MonoBehaviour
     [SerializeField] private float addTimeFromKill = 1.5f;
     private float currentTime;
 
+    [SerializeField] private GameObject deathScreen;
+
     private void Awake() {
         // Basic singleton pattern
         if (Instance != null && Instance != this) {
@@ -29,8 +31,9 @@ public class DeathTimer : MonoBehaviour
         if (currentTime <= 0f) {
             // Handle player death (e.g., reload scene, show game over screen, etc.)
             Debug.Log("Player Died!");
-            // For demonstration, we'll just reset the timer
-            currentTime = timeSlider.maxValue;
+            Time.timeScale = 0f; // Pause the game
+
+            deathScreen.SetActive(true); // Show the death screen
         }
     }
 
