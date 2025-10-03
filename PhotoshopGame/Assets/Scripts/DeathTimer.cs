@@ -9,8 +9,11 @@ public class DeathTimer : MonoBehaviour
     [SerializeField] private float addTimeFromKill = 1.5f;
     private float currentTime;
 
+    private string playerName = "YOU";
+
     private bool isGameOver = false;
 
+    [SerializeField] private GameObject highScoreScreen;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private RockCollision rockCollision; // Reference to RockCollision script
     [SerializeField] private HighscoreTable highscoreTable; // Reference to HighscoreTable script
@@ -42,13 +45,14 @@ public class DeathTimer : MonoBehaviour
         }
     }
 
-    public void OnGameOver() {
-        int finalScore = rockCollision.CurrentScore;
-        string playerName = "YOU"; // You can modify this to get the player's name from input
-
-        highscoreTable.AddHighScoreEntry(finalScore, playerName);
-
+    private void OnGameOver() {
         deathScreen.SetActive(true);
+    }
+
+    public void OnNameInputted() {
+        int finalScore = rockCollision.CurrentScore;
+        highscoreTable.AddHighScoreEntry(finalScore, playerName);
+        highScoreScreen.SetActive(true);
     }
 
     public void AddTime() {
@@ -57,5 +61,13 @@ public class DeathTimer : MonoBehaviour
             currentTime = timeSlider.maxValue;
         }
         timeSlider.value = currentTime;
+    }
+
+    public void SetPlayerName(string name) {
+        Debug.Log("Setting player name to: " + name);
+
+        playerName = name;
+
+        OnNameInputted();
     }
 }
