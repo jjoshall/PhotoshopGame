@@ -14,6 +14,7 @@ public class RockCollision : MonoBehaviour
     [SerializeField] private int scorePerEnemy = 1;
     [SerializeField] private TextMeshProUGUI scoreNum;
     private int score = 0;
+    public int CurrentScore => score;
 
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private float killJumpForce = 5f;
