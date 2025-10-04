@@ -16,6 +16,7 @@ public class RockCollision : MonoBehaviour
     private int score = 0;
     public int CurrentScore => score;
 
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private float killJumpForce = 5f;
 
@@ -38,6 +39,8 @@ public class RockCollision : MonoBehaviour
             playerRb.AddForce(entryDir * killJumpForce, ForceMode2D.Impulse);
 
             ObjectPoolManager.ReturnObjectToPool(collision.gameObject, ObjectPoolManager.PoolType.GameObjects);
+
+            playerMovement.ResetLaunchPermission();
         }
     }
 }

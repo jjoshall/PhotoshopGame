@@ -1,4 +1,5 @@
 using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject dashPs;
+    [SerializeField] private TextMeshProUGUI jumpTxt;
 
     [Header("Time Slow Settings")]
     [SerializeField] private float timeSlowFactor = 0.1f; // Factor to slow down time while dragging
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDragging = false;
     private float timeSlowTimer = 0f;
     private bool isTimeSlowed = false;
+    private bool hasLaunched = false;
 
     // Getters
     public Vector2 DragStartPos => dragStartPos;
@@ -29,6 +32,12 @@ public class PlayerMovement : MonoBehaviour
     public float MaxLaunchForce => maxLaunchForce;
     public float ForceMultiplier => forceMultiplier;
     public Rigidbody2D Rb => rb;
+    public bool HasLaunched => hasLaunched;
+
+    public void ResetLaunchPermission() {
+        hasLaunched = false;
+        jumpTxt.text = "Can Jump";
+    }
 
     private void Update() {
         if (!isTimeSlowed) return;
@@ -50,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Shoot(InputAction.CallbackContext context) {
-        if (context.started) {
+        if (context.started && !hasLaunched) {
             // Record the position where the drag started
             dragStartPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             isDragging = true;
@@ -58,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             // Slow time while dragging
             isTimeSlowed = true;
         }
-        else if (context.canceled && isDragging) {
+        else if (context.canceled && isDragging && !hasLaunched) {
             Time.timeScale = 1f; // Reset time scale
             isTimeSlowed = false;
             timeSlowTimer = 0f; // Reset timer
@@ -96,6 +105,14 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(clampedForce, ForceMode2D.Impulse);
 
             isDragging = false;
+            hasLaunched = true;
+            jumpTxt.text = "Can't Jump";
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Ground")) {
+            ResetLaunchPermission();
         }
     }
 }

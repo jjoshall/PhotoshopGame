@@ -402,6 +402,7 @@ MonoBehaviour:
   rb: {fileID: 1930587381017640640}
   mainCamera: {fileID: 0}
   dashPs: {fileID: 950889375417760458, guid: 069c262f218945e45889c2c1bf752d2a, type: 3}
+  jumpTxt: {fileID: 0}
   timeSlowFactor: 0.3
   holdDuration: 0.5
   recoveryDuration: 2
@@ -422,6 +423,7 @@ MonoBehaviour:
   hitStopDuration: 0.1
   scorePerEnemy: 1
   scoreNum: {fileID: 0}
+  playerMovement: {fileID: 5185660269992281368}
   playerRb: {fileID: 1930587381017640640}
   killJumpForce: 5
   enemyDeathPs: {fileID: 7935031523306719057, guid: cd1d97c74e3631645acc70497ad8a895, type: 3}
