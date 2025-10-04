@@ -19,6 +19,8 @@ public class RockCollision : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private float killJumpForce = 5f;
 
+    [SerializeField] private GameObject enemyDeathPs;
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Enemy")) {
             score += scorePerEnemy;
@@ -28,6 +30,7 @@ public class RockCollision : MonoBehaviour
 
             CameraShake.Instance.Shake(shakeDuration, shakeMagnitude);
             HitStop.Instance.Stop(hitStopDuration);
+            ObjectPoolManager.SpawnObject(enemyDeathPs, collision.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
 
             Vector2 entryDir = (transform.position - collision.transform.position).normalized;
 

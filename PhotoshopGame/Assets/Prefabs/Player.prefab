@@ -419,8 +419,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RockCollision
   shakeDuration: 0.2
   shakeMagnitude: 0.2
+  hitStopDuration: 0.1
+  scorePerEnemy: 1
+  scoreNum: {fileID: 0}
   playerRb: {fileID: 1930587381017640640}
   killJumpForce: 5
+  enemyDeathPs: {fileID: 7935031523306719057, guid: cd1d97c74e3631645acc70497ad8a895, type: 3}
 --- !u!96 &1691148375622692555
 TrailRenderer:
   serializedVersion: 3
