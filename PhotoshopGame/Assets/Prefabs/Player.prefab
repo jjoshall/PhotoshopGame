@@ -281,7 +281,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0.7
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 71e34b7a107ce7345a77bbe1bd219766, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -397,15 +397,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5755cd86f92a84ab4755105505fa7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  maxLaunchForce: 15
+  maxLaunchForce: 25
   forceMultiplier: 1
   rb: {fileID: 1930587381017640640}
   mainCamera: {fileID: 0}
   dashPs: {fileID: 950889375417760458, guid: 069c262f218945e45889c2c1bf752d2a, type: 3}
   jumpTxt: {fileID: 0}
+  jumpSfx:
+  - {fileID: 8300000, guid: ff01ead656f3ac641b4a001d2925ece9, type: 3}
+  - {fileID: 8300000, guid: 471831cbed3336d469f19eaa30dfed0e, type: 3}
+  - {fileID: 8300000, guid: 9228cce0a25217a4780d12cddf65619d, type: 3}
   timeSlowFactor: 0.3
   holdDuration: 0.5
   recoveryDuration: 2
+  launchCooldown: 1
+  cooldownCompleteSfx: {fileID: 8300000, guid: 2a69949ba49305d4290e2d791d4e7b4f, type: 3}
 --- !u!114 &6189474719417026273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +433,10 @@ MonoBehaviour:
   playerRb: {fileID: 1930587381017640640}
   killJumpForce: 5
   enemyDeathPs: {fileID: 7935031523306719057, guid: cd1d97c74e3631645acc70497ad8a895, type: 3}
+  enemyDeathSFX:
+  - {fileID: 8300000, guid: 4211211cef150974fb8b684dbd676114, type: 3}
+  - {fileID: 8300000, guid: 6ad6ab47f8a8d364890e05ae6d54fa5e, type: 3}
+  - {fileID: 8300000, guid: 2dc00117da685894994b97d68c536b72, type: 3}
 --- !u!96 &1691148375622692555
 TrailRenderer:
   serializedVersion: 3

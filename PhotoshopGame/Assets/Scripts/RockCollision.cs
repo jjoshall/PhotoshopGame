@@ -21,6 +21,7 @@ public class RockCollision : MonoBehaviour
     [SerializeField] private float killJumpForce = 5f;
 
     [SerializeField] private GameObject enemyDeathPs;
+    [SerializeField] private AudioClip[] enemyDeathSFX;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Enemy")) {
@@ -33,6 +34,8 @@ public class RockCollision : MonoBehaviour
             HitStop.Instance.Stop(hitStopDuration);
             ObjectPoolManager.SpawnObject(enemyDeathPs, collision.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
 
+            SoundEffectManager.Instance.PlayRandomSoundFXClip(enemyDeathSFX, collision.transform, 0.5f);
+
             Vector2 entryDir = (transform.position - collision.transform.position).normalized;
 
             playerRb.linearVelocity = Vector2.zero;
@@ -40,6 +43,7 @@ public class RockCollision : MonoBehaviour
 
             ObjectPoolManager.ReturnObjectToPool(collision.gameObject, ObjectPoolManager.PoolType.GameObjects);
 
+            playerMovement.StopJumpSFX();
             playerMovement.ResetLaunchPermission();
         }
     }

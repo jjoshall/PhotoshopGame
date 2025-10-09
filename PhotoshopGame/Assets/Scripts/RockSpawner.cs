@@ -28,7 +28,7 @@ public class RockSpawner : MonoBehaviour
     }
 
     private Vector2 GetRandomPosition() {
-        Vector2 spawnPosition = new Vector2(Random.Range(-8, 8), Random.Range(-4, 4));
+        Vector2 spawnPosition = new Vector2(Random.Range(-25, 25), Random.Range(-4, 25));
 
         return spawnPosition;
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -14,17 +15,24 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject dashPs;
     [SerializeField] private TextMeshProUGUI jumpTxt;
+    [SerializeField] private AudioClip[] jumpSfx;
+    private AudioSource currentJumpSFX;
 
     [Header("Time Slow Settings")]
     [SerializeField] private float timeSlowFactor = 0.1f; // Factor to slow down time while dragging
     [SerializeField] private float holdDuration = 0.5f; // How long to stay fully slowed
     [SerializeField] private float recoveryDuration = 2f; // How long to lerp back
 
+    [Header("Cooldown Settings")]
+    [SerializeField] private float launchCooldown = 1f; // Cooldown duration in seconds
+    [SerializeField] private AudioClip cooldownCompleteSfx;
+
     private Vector2 dragStartPos;
     private bool isDragging = false;
     private float timeSlowTimer = 0f;
     private bool isTimeSlowed = false;
     private bool hasLaunched = false;
+    private Coroutine cooldownCoroutine;
 
     // Getters
     public Vector2 DragStartPos => dragStartPos;
@@ -37,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
     public void ResetLaunchPermission() {
         hasLaunched = false;
         jumpTxt.text = "Can Jump";
+        if (cooldownCoroutine != null) {
+            StopCoroutine(cooldownCoroutine);
+        }
     }
 
     private void Update() {
@@ -71,6 +82,9 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1f; // Reset time scale
             isTimeSlowed = false;
             timeSlowTimer = 0f; // Reset timer
+
+            // Play jump sound effect
+            currentJumpSFX = SoundEffectManager.Instance.PlayRandomSoundFXClip(jumpSfx, transform, 1f);
 
             // Record mouse up position
             Vector2 dragEndPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -107,12 +121,21 @@ public class PlayerMovement : MonoBehaviour
             isDragging = false;
             hasLaunched = true;
             jumpTxt.text = "Can't Jump";
+            cooldownCoroutine = StartCoroutine(LaunchCooldownCoroutine());
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Ground")) {
-            ResetLaunchPermission();
+    private IEnumerator LaunchCooldownCoroutine() {
+        yield return new WaitForSeconds(launchCooldown);
+        ResetLaunchPermission();
+        SoundEffectManager.Instance.PlaySoundFXClip(cooldownCompleteSfx, transform, 1f);
+    }
+
+    public void StopJumpSFX() {
+        if (currentJumpSFX != null) {
+            currentJumpSFX.Stop();
+            Destroy(currentJumpSFX.gameObject);
+            currentJumpSFX = null;
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4089432515779075432}
   - component: {fileID: 116050999250771451}
   - component: {fileID: 2572874842082623953}
+  - component: {fileID: 7898043202333670941}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
   rockPrefab: {fileID: 8147908731837331984, guid: 1b381ee3e46979d4ebdcc05a11867a72, type: 3}
-  spawnInterval: 0.75
+  spawnInterval: 0.25
 --- !u!114 &116050999250771451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,4 +90,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathTimer
   timeSlider: {fileID: 0}
   addTimeFromKill: 1.5
+  highScoreScreen: {fileID: 0}
   deathScreen: {fileID: 0}
+  rockCollision: {fileID: 0}
+  highscoreTable: {fileID: 0}
+--- !u!114 &7898043202333670941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212527372645931862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f33e0ad421de6429de5255a964c349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectManager
+  soundFXObject: {fileID: 7198813002336297891, guid: d2a3301b51d173f47be7f34b8e84d0d2, type: 3}
+  musicObject: {fileID: 0}
