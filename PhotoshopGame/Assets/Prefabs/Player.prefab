@@ -437,6 +437,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4211211cef150974fb8b684dbd676114, type: 3}
   - {fileID: 8300000, guid: 6ad6ab47f8a8d364890e05ae6d54fa5e, type: 3}
   - {fileID: 8300000, guid: 2dc00117da685894994b97d68c536b72, type: 3}
+  enemySplatSFX: {fileID: 8300000, guid: 3acad301a389d91459dae4379ebe4b37, type: 3}
 --- !u!96 &1691148375622692555
 TrailRenderer:
   serializedVersion: 3

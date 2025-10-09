@@ -34,7 +34,7 @@ public class RockCollision : MonoBehaviour
             HitStop.Instance.Stop(hitStopDuration);
             ObjectPoolManager.SpawnObject(enemyDeathPs, collision.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
 
-            SoundEffectManager.Instance.PlayRandomSoundFXClip(enemyDeathSFX, collision.transform, 0.5f);
+            SoundEffectManager.Instance.PlayRandomSoundFXClip(enemyDeathSFX, collision.transform, 0.75f);
 
             Vector2 entryDir = (transform.position - collision.transform.position).normalized;
 
