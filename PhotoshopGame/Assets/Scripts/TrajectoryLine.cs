@@ -18,6 +18,7 @@ public class TrajectoryLine : MonoBehaviour
         // Grab line renderer component and set its number of points
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 0;
+        lineRenderer.sortingOrder = -2;
 
         mainCamera = Camera.main;
     }

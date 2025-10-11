@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RockSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject rockPrefab;
+    [SerializeField] private GameObject[] prefabsToSpawn;
 
     private float timer;
     [SerializeField] private float spawnInterval = 3f;
@@ -17,19 +17,32 @@ public class RockSpawner : MonoBehaviour
     }
 
     private void SpawnRock() {
-        if (rockPrefab == null) {
-            Debug.Log("Rock prefab is not assigned.");
+        if (prefabsToSpawn == null) {
+            Debug.Log("Prefab is not assigned.");
             return;
         }
 
         Vector2 spawnPosition = GetRandomPosition();
 
-        ObjectPoolManager.SpawnObject(rockPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
+        GameObject spawnedPrefab = GetRandomPrefab();
+
+        ObjectPoolManager.SpawnObject(spawnedPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
     }
 
     private Vector2 GetRandomPosition() {
         Vector2 spawnPosition = new Vector2(Random.Range(-25, 25), Random.Range(-4, 25));
 
         return spawnPosition;
+    }
+
+    private GameObject GetRandomPrefab() {
+        int val = Random.Range(0, 11);
+
+        if (val <= 6) {
+            return prefabsToSpawn[0];
+        }
+        else {
+            return prefabsToSpawn[1];
+        }
     }
 }

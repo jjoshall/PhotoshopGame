@@ -61,7 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da29a3e7314cc894597a42610517e754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
-  rockPrefab: {fileID: 8147908731837331984, guid: 1b381ee3e46979d4ebdcc05a11867a72, type: 3}
+  prefabsToSpawn:
+  - {fileID: 8147908731837331984, guid: 1b381ee3e46979d4ebdcc05a11867a72, type: 3}
+  - {fileID: 816155195606285386, guid: b81b49059ae3f5f4bb06d45c4c4aa371, type: 3}
   spawnInterval: 0.25
 --- !u!114 &116050999250771451
 MonoBehaviour:
