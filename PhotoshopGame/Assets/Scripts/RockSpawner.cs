@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RockSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] prefabsToSpawn;
+    [SerializeField] private GameObject prefabToSpawn;
 
     private float timer;
     [SerializeField] private float spawnInterval = 3f;
@@ -17,32 +17,55 @@ public class RockSpawner : MonoBehaviour
     }
 
     private void SpawnRock() {
-        if (prefabsToSpawn == null) {
+        if (prefabToSpawn == null) {
             Debug.Log("Prefab is not assigned.");
             return;
         }
 
         Vector2 spawnPosition = GetRandomPosition();
 
-        GameObject spawnedPrefab = GetRandomPrefab();
-
-        ObjectPoolManager.SpawnObject(spawnedPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
+        ObjectPoolManager.SpawnObject(prefabToSpawn, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
     }
 
     private Vector2 GetRandomPosition() {
-        Vector2 spawnPosition = new Vector2(Random.Range(-25, 25), Random.Range(-4, 25));
+        Camera cam = Camera.main;
+        float camHeight = 2f * cam.orthographicSize;
+        float camWidth = camHeight * cam.aspect;
 
-        return spawnPosition;
+        Vector2 camPos = cam.transform.position;
+
+        int side = Random.Range(0, 3);
+
+        Vector2 spawnPos = Vector2.zero;
+
+        float offset = 1.5f; // how far outside the view to spawn
+
+        switch (side) {
+            case 0: // Left
+                spawnPos = new Vector2(camPos.x - camWidth / 2 - offset,
+                                       Random.Range(camPos.y - camHeight / 2, camPos.y + camHeight / 2));
+                break;
+            case 1: // Right
+                spawnPos = new Vector2(camPos.x + camWidth / 2 + offset,
+                                       Random.Range(camPos.y - camHeight / 2, camPos.y + camHeight / 2));
+                break;
+            case 2: // Bottom
+                spawnPos = new Vector2(Random.Range(camPos.x - camWidth / 2, camPos.x + camWidth / 2),
+                                       camPos.y - camHeight / 2 - offset);
+                break;
+        }
+
+        return spawnPos;
     }
 
-    private GameObject GetRandomPrefab() {
-        int val = Random.Range(0, 11);
+    //private GameObject GetRandomPrefab() {
+    //    int val = Random.Range(0, 11);
 
-        if (val <= 6) {
-            return prefabsToSpawn[0];
-        }
-        else {
-            return prefabsToSpawn[1];
-        }
-    }
+    //    if (val <= 6) {
+    //        return prefabsToSpawn[0];
+    //    }
+    //    else {
+    //        return prefabsToSpawn[1];
+    //    }
+    //}
 }
