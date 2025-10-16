@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
   prefabToSpawn: {fileID: 8147908731837331984, guid: 1b381ee3e46979d4ebdcc05a11867a72, type: 3}
-  spawnInterval: 0.5
+  spawnInterval: 2
 --- !u!114 &116050999250771451
 MonoBehaviour:
   m_ObjectHideFlags: 0

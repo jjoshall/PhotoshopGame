@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour {
     [SerializeField] private Transform target;
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float stoppingDistance;
     [SerializeField] private float wiggleSpeed = 5f;
     [SerializeField] private float wiggleAngle = 10f;
 
@@ -21,7 +22,7 @@ public class EnemyPathing : MonoBehaviour {
         if (!reachedTarget) {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
-            if (Vector2.Distance(transform.position, target.position) < 3f) {
+            if (Vector2.Distance(transform.position, target.position) < stoppingDistance) {
                 reachedTarget = true;
                 baseRotation = transform.eulerAngles.z;
             }

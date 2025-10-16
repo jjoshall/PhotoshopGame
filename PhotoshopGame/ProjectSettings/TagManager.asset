@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Volume
   - Wall
+  - AttackPoint
   layers:
   - Default
   - TransparentFX
