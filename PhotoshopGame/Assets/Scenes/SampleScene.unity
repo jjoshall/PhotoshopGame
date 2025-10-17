@@ -3264,7 +3264,7 @@ PrefabInstance:
       objectReference: {fileID: 1255534153}
     - target: {fileID: 5274769895347699072, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
       propertyPath: m_Name
-      value: EnemyAttackPoint
+      value: Heart
       objectReference: {fileID: 0}
     - target: {fileID: 6873651076825860611, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3272,7 +3272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6873651076825860611, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 6.4
       objectReference: {fileID: 0}
     - target: {fileID: 6873651076825860611, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
       propertyPath: m_LocalPosition.z
