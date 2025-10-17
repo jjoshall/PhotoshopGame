@@ -28,7 +28,7 @@ public class AttackPoint : MonoBehaviour
     }
 
     public void TakeDamage(float damageAmt) {
-        if (currentHealth == 0f) {
+        if (currentHealth <= 0f) {
             currentHealth = 0f;
             Debug.Log("LOSE");
             return;
