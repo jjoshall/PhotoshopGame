@@ -10,6 +10,8 @@ public class AttackPoint : MonoBehaviour
     [SerializeField] private Image healthBarTrailingFillImage;
     [SerializeField] private float trailDelay = 0.4f;
 
+    [SerializeField] private GameObject deathScreen;
+
     [SerializeField] private float maxHealth = 100f;
 
     private float currentHealth;
@@ -30,7 +32,14 @@ public class AttackPoint : MonoBehaviour
     public void TakeDamage(float damageAmt) {
         if (currentHealth <= 0f) {
             currentHealth = 0f;
-            Debug.Log("LOSE");
+            Time.timeScale = 0f;
+
+            deathScreen.SetActive(true);
+
+            CanvasGroup cg = deathScreen.GetComponent<CanvasGroup>();
+            cg.alpha = 0f;
+
+            cg.DOFade(1f, 1f).SetUpdate(true);
             return;
         }
         
