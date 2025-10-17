@@ -765,7 +765,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1343013422163429150
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -924,10 +924,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeathBar
   healthBarFillImage: {fileID: 5751758228571069044}
   healthBarTrailingFillImage: {fileID: 6357365995103044711}
+  healthBarTrailBackgroundImage: {fileID: 7680705169500826156}
   trailDelay: 0.4
   maxHealth: 100
   decayAmt: 5
   decayRate: 1
+  currentHealth: 0
 --- !u!96 &1691148375622692555
 TrailRenderer:
   serializedVersion: 3

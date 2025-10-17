@@ -19,6 +19,7 @@ public class RockCollision : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private float killJumpForce = 5f;
+    [SerializeField] private float healthToAddAmt = 5f;
 
     [SerializeField] private GameObject enemyDeathPs;
     [SerializeField] private AudioClip[] enemyDeathSFX;
@@ -27,6 +28,8 @@ public class RockCollision : MonoBehaviour
         if (collision.CompareTag("Enemy")) {
             score += scorePerEnemy;
             scoreNum.text = score.ToString();
+
+            PlayerDeathBar.Instance.AddHealth(healthToAddAmt);
 
             CameraShake.Instance.Shake(shakeDuration, shakeMagnitude);
             HitStop.Instance.Stop(hitStopDuration);
