@@ -9,6 +9,7 @@ public class PlayerDeathBar : MonoBehaviour
 
     public event Action OnPlayerDeath;
 
+    [Header("References")]
     [SerializeField] private Image healthBarFillImage;
     [SerializeField] private Image healthBarTrailingFillImage;
     [SerializeField] private Image healthBarTrailBackgroundImage;
@@ -18,7 +19,7 @@ public class PlayerDeathBar : MonoBehaviour
     [SerializeField] private float decayAmt = 5f;
     [SerializeField] private float decayRate = 1f;
 
-    [SerializeField] private float currentHealth;
+    private float currentHealth;
     private float decayTimer;
     private bool isDead = false;
 
@@ -95,8 +96,7 @@ public class PlayerDeathBar : MonoBehaviour
         if (ratio < currentFill) {
             // Taking damage
             healthBarTrailBackgroundImage.color = defaultColor;
-            Debug.Log("Changing color to white");
-
+            
             fillTween = healthBarFillImage
                 .DOFillAmount(ratio, 0.25f)
                 .SetEase(Ease.InOutSine);
@@ -109,8 +109,7 @@ public class PlayerDeathBar : MonoBehaviour
         else {
             // Healing
             healthBarTrailBackgroundImage.color = healColor;
-            Debug.Log("Changing color to green");
-
+            
             trailTween = healthBarTrailingFillImage
                 .DOFillAmount(ratio, 0.25f)
                 .SetEase(Ease.InOutSine);
@@ -126,9 +125,15 @@ public class PlayerDeathBar : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
-        Debug.Log("You died. respawn now");
-
         // Trigger the event so any listener can react
         OnPlayerDeath?.Invoke();
+    }
+
+    public void ResetHealth() {
+        isDead = false;
+        currentHealth = maxHealth;
+
+        healthBarFillImage.fillAmount = 1f;
+        healthBarTrailingFillImage.fillAmount = 1f;
     }
 }

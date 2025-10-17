@@ -663,7 +663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8127985940529832557
 Transform:
   m_ObjectHideFlags: 0
@@ -673,7 +673,7 @@ Transform:
   m_GameObject: {fileID: 7576982219944194366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: -4.2, z: 0}
+  m_LocalPosition: {x: 0.0075799823, y: -9.27977, z: 0}
   m_LocalScale: {x: 0.22246252, y: 0.22246252, z: 0.22246252}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -905,6 +905,7 @@ MonoBehaviour:
   playerMovement: {fileID: 5185660269992281368}
   playerRb: {fileID: 1930587381017640640}
   killJumpForce: 5
+  healthToAddAmt: 5
   enemyDeathPs: {fileID: 7935031523306719057, guid: cd1d97c74e3631645acc70497ad8a895, type: 3}
   enemyDeathSFX:
   - {fileID: 8300000, guid: 4211211cef150974fb8b684dbd676114, type: 3}
@@ -929,7 +930,6 @@ MonoBehaviour:
   maxHealth: 100
   decayAmt: 5
   decayRate: 1
-  currentHealth: 0
 --- !u!96 &1691148375622692555
 TrailRenderer:
   serializedVersion: 3
