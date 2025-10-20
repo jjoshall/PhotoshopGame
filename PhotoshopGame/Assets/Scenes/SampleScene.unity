@@ -3250,6 +3250,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220808018583146623, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220808018583146623, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220808018583146623, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4875569999506762730, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
       propertyPath: deathScreen
       value: 
