@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 116050999250771451}
   - component: {fileID: 7898043202333670941}
   - component: {fileID: 1368275018278677681}
+  - component: {fileID: 3051756647298144539}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -103,5 +104,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawn
   player: {fileID: 7576982219944194366, guid: 7b6120753b52d4e48b880c4aa8e244d0, type: 3}
-  respawnPoint: {x: 0, y: 0, z: 0}
+  respawnPoint: {fileID: 0}
   respawnText: {fileID: 0}
+--- !u!114 &3051756647298144539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212527372645931862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8366a6c1e437db45911b857ab2ce00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DNACounter
+  dnaTxt: {fileID: 0}

@@ -24,6 +24,8 @@ public class RockCollision : MonoBehaviour
     [SerializeField] private GameObject enemyDeathPs;
     [SerializeField] private AudioClip[] enemyDeathSFX;
 
+    [SerializeField] private GameObject dnaDrop;
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Enemy")) {
             score += scorePerEnemy;
@@ -36,6 +38,8 @@ public class RockCollision : MonoBehaviour
             ObjectPoolManager.SpawnObject(enemyDeathPs, collision.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
 
             SoundEffectManager.Instance.PlayRandomSoundFXClip(enemyDeathSFX, collision.transform, 0.75f);
+
+            ObjectPoolManager.SpawnObject(dnaDrop, collision.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
 
             Vector2 entryDir = (transform.position - collision.transform.position).normalized;
 
