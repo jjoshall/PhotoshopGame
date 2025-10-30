@@ -136,7 +136,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6, y: 6}
+  m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
 --- !u!114 &6190664490563195877
 MonoBehaviour:
@@ -151,4 +151,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DNAEffect
   spinSpeed: 20
-  dnaTxt: {fileID: 8723319956450523114, guid: 4037a80ff9cf06141adcd4f7bcfb8c9d, type: 3}
