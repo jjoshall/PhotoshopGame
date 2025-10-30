@@ -70,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Shoot(InputAction.CallbackContext context) {
+        if (!isActiveAndEnabled) return;
+        
         if (context.started && !hasLaunched) {
             // Record the position where the drag started
             dragStartPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -121,7 +123,9 @@ public class PlayerMovement : MonoBehaviour
             isDragging = false;
             hasLaunched = true;
             jumpTxt.text = "Can't Jump";
-            cooldownCoroutine = StartCoroutine(LaunchCooldownCoroutine());
+
+            if (gameObject.activeInHierarchy)
+                cooldownCoroutine = StartCoroutine(LaunchCooldownCoroutine());
         }
     }
 
@@ -136,6 +140,15 @@ public class PlayerMovement : MonoBehaviour
             currentJumpSFX.Stop();
             Destroy(currentJumpSFX.gameObject);
             currentJumpSFX = null;
+        }
+    }
+
+    public void CancelDragOnDeath() {
+        if (isDragging) {
+            isDragging = false;
+            isTimeSlowed = false;
+            Time.timeScale = 1f;
+            timeSlowTimer = 0f;
         }
     }
 }

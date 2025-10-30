@@ -19,6 +19,11 @@ public class PlayerRespawn : MonoBehaviour
     }
 
     private void HandleRespawn() {
+        var movement = player.GetComponent<PlayerMovement>();
+        if (movement != null) {
+            movement.CancelDragOnDeath();
+        }
+
         player.SetActive(false);
         StartCoroutine(RespawnCountdown());
     }
