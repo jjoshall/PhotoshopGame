@@ -5,11 +5,14 @@ public class TrajectoryLine : MonoBehaviour
     [Header("References")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Transform player;
+    [SerializeField] private Transform swordPivot;
 
     [Header("Trajectory Line Settings")]
     [SerializeField] private int segmentCount = 50;
     [SerializeField] private float segmentSpacing = 0.1f;
     [SerializeField] private float previewFraction = 0.25f; // only show first 25%
+
+    [SerializeField] private float swordRotationOffset = 29f;
 
     private Camera mainCamera;
     private LineRenderer lineRenderer;
@@ -26,6 +29,7 @@ public class TrajectoryLine : MonoBehaviour
     private void Update() {
         if (playerMovement.IsDragging) {
             ShowTrajectory();
+            RotateSwordToTrajectory();
         }
         else {
             lineRenderer.positionCount = 0;
@@ -53,5 +57,17 @@ public class TrajectoryLine : MonoBehaviour
             pos += velocity * segmentSpacing;
             velocity.y += gravity * segmentSpacing; // apply gravity
         }
+    }
+
+    private void RotateSwordToTrajectory() {
+        Vector2 dragStart = playerMovement.DragStartPos;
+        Vector2 dragCurrent = mainCamera.ScreenToWorldPoint(UnityEngine.InputSystem.Mouse.current.position.ReadValue());
+        Vector2 dragVector = dragCurrent - dragStart;
+
+        Vector2 launchDir = -dragVector;
+
+        float angle = Mathf.Atan2(launchDir.y, launchDir.x) * Mathf.Rad2Deg;
+
+        swordPivot.rotation = Quaternion.Euler(0f, 0f, angle + swordRotationOffset);
     }
 }

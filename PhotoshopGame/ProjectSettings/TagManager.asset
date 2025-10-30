@@ -9,6 +9,7 @@ TagManager:
   - Volume
   - Wall
   - AttackPoint
+  - Sword
   layers:
   - Default
   - TransparentFX

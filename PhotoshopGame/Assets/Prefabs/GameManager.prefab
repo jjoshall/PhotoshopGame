@@ -106,6 +106,7 @@ MonoBehaviour:
   player: {fileID: 7576982219944194366, guid: 7b6120753b52d4e48b880c4aa8e244d0, type: 3}
   respawnPoint: {fileID: 0}
   respawnText: {fileID: 0}
+  playerMovement: {fileID: 5185660269992281368, guid: 7b6120753b52d4e48b880c4aa8e244d0, type: 3}
 --- !u!114 &3051756647298144539
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject respawnPoint;
     [SerializeField] private TextMeshProUGUI respawnText;
+    [SerializeField] private PlayerMovement playerMovement;
 
     private void Start() {
         if (PlayerDeathBar.Instance != null)
@@ -19,9 +20,8 @@ public class PlayerRespawn : MonoBehaviour
     }
 
     private void HandleRespawn() {
-        var movement = player.GetComponent<PlayerMovement>();
-        if (movement != null) {
-            movement.CancelDragOnDeath();
+        if (playerMovement != null) {
+            playerMovement.CancelDragOnDeath();
         }
 
         player.SetActive(false);
@@ -49,6 +49,7 @@ public class PlayerRespawn : MonoBehaviour
         player.transform.position = respawnPoint.transform.position;
 
         PlayerDeathBar.Instance.ResetHealth();
+        playerMovement.ResetLaunchPermission();
 
         player.SetActive(true);
     }

@@ -70,9 +70,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Shoot(InputAction.CallbackContext context) {
-        if (!isActiveAndEnabled) return;
+        if (!isActiveAndEnabled) {
+            Debug.Log("PlayerMovement not active");
+            return;
+        }
         
         if (context.started && !hasLaunched) {
+            Debug.Log("Drag started");
+
             // Record the position where the drag started
             dragStartPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             isDragging = true;

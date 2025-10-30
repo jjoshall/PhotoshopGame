@@ -151,7 +151,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasicRock
   target: {fileID: 6873651076825860611, guid: ee08049cb40e9144dbaea91ae42728c8, type: 3}
   moveSpeed: 3
-  stoppingDistance: 2.5
+  stoppingDistance: 3
   wiggleSpeed: 5
   wiggleAngle: 10
 --- !u!114 &291480678026242637
