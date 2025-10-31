@@ -16,6 +16,10 @@ public class RockCollision : MonoBehaviour
     private int score = 0;
     public int CurrentScore => score;
 
+    [SerializeField] private int enemiesKilled = 0;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite[] sprites;
+
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private float killJumpForce = 5f;
@@ -28,6 +32,9 @@ public class RockCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Enemy")) {
+            enemiesKilled++;
+            SetSyringeSpriteState(enemiesKilled);
+
             score += scorePerEnemy;
             scoreNum.text = score.ToString();
 
@@ -51,5 +58,20 @@ public class RockCollision : MonoBehaviour
             playerMovement.StopJumpSFX();
             playerMovement.ResetLaunchPermission();
         }
+    }
+
+    private void SetSyringeSpriteState(int killCount) {
+        if (killCount == 0)
+            spriteRenderer.sprite = sprites[0];
+        else if (killCount == 1)
+            spriteRenderer.sprite = sprites[1];
+        else if (killCount == 2)
+            spriteRenderer.sprite = sprites[2];
+        else if (killCount == 3)
+            spriteRenderer.sprite = sprites[3];
+        else if (killCount == 4)
+            spriteRenderer.sprite = sprites[4];
+        else if (killCount == 5)
+            spriteRenderer.sprite = sprites[5];
     }
 }
