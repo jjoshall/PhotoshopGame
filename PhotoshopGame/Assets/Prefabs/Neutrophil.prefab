@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 1361479049060513869}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.6003063, w: 0.79977024}
-  m_LocalPosition: {x: 8.4, y: -4.7, z: 0}
-  m_LocalScale: {x: 0.9875417, y: 0.9875417, z: 0.9875417}
+  m_LocalPosition: {x: 9.1, y: -5.1, z: 0}
+  m_LocalScale: {x: 1.2552643, y: 1.2552643, z: 1.2552643}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3050044676082439925}
@@ -560,7 +560,7 @@ MonoBehaviour:
   segmentCount: 50
   segmentSpacing: 0.1
   previewFraction: 0.15
-  swordRotationOffset: 28
+  swordRotationOffset: 29
 --- !u!120 &1730355809557052104
 LineRenderer:
   serializedVersion: 2
@@ -794,14 +794,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5778719727291765105}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.8463791, w: 0.5325809}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9366722, w: 0.35020736}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 821655637669804803}
   m_Father: {fileID: 8127985940529832557}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 115.64}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 139}
 --- !u!1 &7576982219944194366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,6 +1065,15 @@ MonoBehaviour:
   hitStopDuration: 0.1
   scorePerEnemy: 1
   scoreNum: {fileID: 0}
+  enemiesKilled: 0
+  spriteRenderer: {fileID: 5683303796503322167}
+  sprites:
+  - {fileID: 300003777755580480, guid: 286a962c46e292f4297f80ec24500515, type: 3}
+  - {fileID: 4164345766123583623, guid: 286a962c46e292f4297f80ec24500515, type: 3}
+  - {fileID: 1983994938706187926, guid: 286a962c46e292f4297f80ec24500515, type: 3}
+  - {fileID: -6663843703770226042, guid: 286a962c46e292f4297f80ec24500515, type: 3}
+  - {fileID: 6273099070017778266, guid: 286a962c46e292f4297f80ec24500515, type: 3}
+  - {fileID: 8085347657503241731, guid: 286a962c46e292f4297f80ec24500515, type: 3}
   playerMovement: {fileID: 5185660269992281368}
   playerRb: {fileID: 1930587381017640640}
   killJumpForce: 5

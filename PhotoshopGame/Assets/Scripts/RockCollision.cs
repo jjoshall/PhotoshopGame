@@ -16,6 +16,7 @@ public class RockCollision : MonoBehaviour
     private int score = 0;
     public int CurrentScore => score;
 
+    [Header("Syringe Sprites")]
     [SerializeField] private int enemiesKilled = 0;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] sprites;
