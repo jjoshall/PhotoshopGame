@@ -4065,6 +4065,14 @@ PrefabInstance:
       propertyPath: dnaTxt
       value: 
       objectReference: {fileID: 1681624024}
+    - target: {fileID: 4089432515779075432, guid: 9bd21a73b24e1d147bdd08cdffaf519e, type: 3}
+      propertyPath: waveNumTxt
+      value: 
+      objectReference: {fileID: 1415126719}
+    - target: {fileID: 4089432515779075432, guid: 9bd21a73b24e1d147bdd08cdffaf519e, type: 3}
+      propertyPath: waveIncomingTxt
+      value: 
+      objectReference: {fileID: 399343893}
     - target: {fileID: 4452355918792121745, guid: 9bd21a73b24e1d147bdd08cdffaf519e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

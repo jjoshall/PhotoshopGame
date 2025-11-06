@@ -41,6 +41,7 @@ public class RockCollision : MonoBehaviour
 
             PlayerDeathBar.Instance.AddHealth(healthToAddAmt);
 
+            RockSpawner.Instance.RemoveEnemy(collision.gameObject);
             CameraShake.Instance.Shake(shakeDuration, shakeMagnitude);
             HitStop.Instance.Stop(hitStopDuration);
             ObjectPoolManager.SpawnObject(enemyDeathPs, collision.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);

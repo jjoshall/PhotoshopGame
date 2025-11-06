@@ -64,6 +64,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
   prefabToSpawn: {fileID: 8147908731837331984, guid: 1b381ee3e46979d4ebdcc05a11867a72, type: 3}
   spawnInterval: 2
+  spawnIntervalScaling: 0.75
+  waveTimeScaling: 5
+  totalWaves: 3
+  timeForWave: 20
+  waveNumTxt: {fileID: 0}
+  waveIncomingTxt: {fileID: 0}
 --- !u!114 &116050999250771451
 MonoBehaviour:
   m_ObjectHideFlags: 0

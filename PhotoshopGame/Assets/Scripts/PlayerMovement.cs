@@ -76,8 +76,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
         if (context.started && !hasLaunched) {
-            Debug.Log("Drag started");
-
             // Record the position where the drag started
             dragStartPos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             isDragging = true;

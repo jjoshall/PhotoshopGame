@@ -1,24 +1,85 @@
+using System.Collections.Generic;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class RockSpawner : MonoBehaviour
 {
+    public static RockSpawner Instance { get; private set; }
+
     [SerializeField] private GameObject prefabToSpawn;
+    private readonly List<GameObject> activeEnemies = new List<GameObject>();
 
-    private float timer;
-    [SerializeField] private float spawnInterval = 3f;
+    [Header("Spawn Settings")]
+    [SerializeField] private float spawnInterval = 2f;
+    [SerializeField] private float spawnIntervalScaling = 0.75f;
+    [SerializeField] private float waveTimeScaling = 5f;
 
-    [SerializeField] private int waveNumber = 1;
+    [Header("Wave Settings")]
+    [SerializeField] private int totalWaves = 3;
+    [SerializeField] private float timeForWave = 30f;
+    [SerializeField] private TextMeshProUGUI waveNumTxt;
+    [SerializeField] private GameObject waveIncomingTxt;
+
+    private float spawnTimer = 0f;
+    private float waveTimer = 0f;
     private int currentWave = 0;
-    [SerializeField] private int enemiesPerWave = 10;
+    private bool waveActive = false;
 
-    private void Update() {
-        timer += Time.deltaTime;
-
-        if (timer >= spawnInterval) {
-            SpawnRock();
-            timer = 0f;
+    private void Awake() {
+        // Basic singleton pattern
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+            return;
         }
+        Instance = this;
     }
+
+    private void Start() {
+        waveIncomingTxt.SetActive(false);
+        waveNumTxt.text = "";
+        StartCoroutine(WaveLoop());
+    }
+
+    private IEnumerator WaveLoop() {
+        while (currentWave < totalWaves) {
+            // Show wave incoming text
+            waveIncomingTxt.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            waveIncomingTxt.SetActive(false);
+
+            // Start wave
+            currentWave++;
+            waveNumTxt.text = currentWave.ToString();
+
+            waveActive = true;
+            waveTimer = timeForWave;
+            spawnTimer = 0f;
+
+            while (waveTimer > 0) {
+                waveTimer -= Time.deltaTime;
+                spawnTimer -= Time.deltaTime;
+
+                if (spawnTimer <= 0) {
+                    spawnTimer = spawnInterval;
+                    SpawnRock();
+                }
+
+                yield return null;
+            }
+
+            // Clear enemies
+            ClearAllEnemies();
+            waveActive = false;
+
+            // Scale difficulty for next wave
+            spawnInterval *= spawnIntervalScaling;
+            timeForWave += waveTimeScaling;
+        }
+
+        Debug.Log("All waves completed.");
+        Time.timeScale = 0f; // Pause the game
+    } 
 
     private void SpawnRock() {
         if (prefabToSpawn == null) {
@@ -28,7 +89,9 @@ public class RockSpawner : MonoBehaviour
 
         Vector2 spawnPosition = GetRandomPosition();
 
-        ObjectPoolManager.SpawnObject(prefabToSpawn, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
+        GameObject enemy = ObjectPoolManager.SpawnObject(prefabToSpawn, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
+
+        activeEnemies.Add(enemy);
     }
 
     private Vector2 GetRandomPosition() {
@@ -62,7 +125,14 @@ public class RockSpawner : MonoBehaviour
         return spawnPos;
     }
 
-    private void WaveSpawner() {
+    private void ClearAllEnemies() {
+        foreach (GameObject enemy in activeEnemies) {
+            ObjectPoolManager.ReturnObjectToPool(enemy, ObjectPoolManager.PoolType.GameObjects);
+        }
+        activeEnemies.Clear();
+    }
 
+    public void RemoveEnemy(GameObject enemy) {
+        activeEnemies.Remove(enemy);
     }
 }
