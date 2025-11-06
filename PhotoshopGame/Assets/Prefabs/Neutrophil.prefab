@@ -557,7 +557,7 @@ MonoBehaviour:
   playerMovement: {fileID: 5185660269992281368}
   player: {fileID: 8127985940529832557}
   swordPivot: {fileID: 3050044676082439925}
-  segmentCount: 50
+  segmentCount: 35
   segmentSpacing: 0.1
   previewFraction: 0.15
   swordRotationOffset: 29

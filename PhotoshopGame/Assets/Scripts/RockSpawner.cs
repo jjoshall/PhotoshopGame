@@ -7,6 +7,10 @@ public class RockSpawner : MonoBehaviour
     private float timer;
     [SerializeField] private float spawnInterval = 3f;
 
+    [SerializeField] private int waveNumber = 1;
+    private int currentWave = 0;
+    [SerializeField] private int enemiesPerWave = 10;
+
     private void Update() {
         timer += Time.deltaTime;
 
@@ -58,14 +62,7 @@ public class RockSpawner : MonoBehaviour
         return spawnPos;
     }
 
-    //private GameObject GetRandomPrefab() {
-    //    int val = Random.Range(0, 11);
+    private void WaveSpawner() {
 
-    //    if (val <= 6) {
-    //        return prefabsToSpawn[0];
-    //    }
-    //    else {
-    //        return prefabsToSpawn[1];
-    //    }
-    //}
+    }
 }
