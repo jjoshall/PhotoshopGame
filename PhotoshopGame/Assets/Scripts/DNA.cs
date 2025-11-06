@@ -13,7 +13,7 @@ public class DNA : MonoBehaviour
         if (collision.CompareTag("Player")) {
             // Play a sound
 
-            DNACounter.Instance.AddDNA();
+            DNACounter.Instance.AddDNA(1);
 
             ObjectPoolManager.ReturnObjectToPool(gameObject, ObjectPoolManager.PoolType.GameObjects);
         }

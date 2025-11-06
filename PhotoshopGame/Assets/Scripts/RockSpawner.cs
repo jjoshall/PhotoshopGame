@@ -9,6 +9,7 @@ public class RockSpawner : MonoBehaviour
 
     [SerializeField] private GameObject prefabToSpawn;
     private readonly List<GameObject> activeEnemies = new List<GameObject>();
+    [SerializeField] private GameObject player;
 
     [Header("Spawn Settings")]
     [SerializeField] private float spawnInterval = 2f;
@@ -20,6 +21,7 @@ public class RockSpawner : MonoBehaviour
     [SerializeField] private float timeForWave = 30f;
     [SerializeField] private TextMeshProUGUI waveNumTxt;
     [SerializeField] private GameObject waveIncomingTxt;
+    [SerializeField] private GameObject upgradeScreen;
 
     private float spawnTimer = 0f;
     private float waveTimer = 0f;
@@ -41,45 +43,43 @@ public class RockSpawner : MonoBehaviour
         StartCoroutine(WaveLoop());
     }
 
-    private IEnumerator WaveLoop() {
-        while (currentWave < totalWaves) {
-            // Show wave incoming text
-            waveIncomingTxt.SetActive(true);
-            yield return new WaitForSeconds(3f);
-            waveIncomingTxt.SetActive(false);
+    public IEnumerator WaveLoop() {
+        // Show wave incoming text
+        //waveIncomingTxt.SetActive(true);
+        //yield return new WaitForSeconds(3f);
+        //waveIncomingTxt.SetActive(false);
 
-            // Start wave
-            currentWave++;
-            waveNumTxt.text = currentWave.ToString();
+        // Start wave
+        currentWave++;
+        waveNumTxt.text = currentWave.ToString();
 
-            waveActive = true;
-            waveTimer = timeForWave;
-            spawnTimer = 0f;
+        waveActive = true;
+        waveTimer = timeForWave;
+        spawnTimer = 0f;
 
-            while (waveTimer > 0) {
-                waveTimer -= Time.deltaTime;
-                spawnTimer -= Time.deltaTime;
+        while (waveTimer > 0) {
+            waveTimer -= Time.deltaTime;
+            spawnTimer -= Time.deltaTime;
 
-                if (spawnTimer <= 0) {
-                    spawnTimer = spawnInterval;
-                    SpawnRock();
-                }
-
-                yield return null;
+            if (spawnTimer <= 0) {
+                spawnTimer = spawnInterval;
+                SpawnRock();
             }
 
-            // Clear enemies
-            ClearAllEnemies();
-            waveActive = false;
-
-            // Scale difficulty for next wave
-            spawnInterval *= spawnIntervalScaling;
-            timeForWave += waveTimeScaling;
+            yield return null;
         }
 
-        Debug.Log("All waves completed.");
-        Time.timeScale = 0f; // Pause the game
-    } 
+        // Wave ends
+        ClearAllEnemies();
+        waveActive = false;
+
+        // Open shop
+        ActivateUpgradeScreen();
+
+        // Scale difficulty for next wave
+        spawnInterval *= spawnIntervalScaling;
+        timeForWave += waveTimeScaling;
+    }
 
     private void SpawnRock() {
         if (prefabToSpawn == null) {
@@ -123,6 +123,11 @@ public class RockSpawner : MonoBehaviour
         }
 
         return spawnPos;
+    }
+
+    private void ActivateUpgradeScreen() {
+        upgradeScreen.SetActive(true);
+        player.SetActive(false);
     }
 
     private void ClearAllEnemies() {

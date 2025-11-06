@@ -5,7 +5,8 @@ public class DNACounter : MonoBehaviour
 {
     public static DNACounter Instance { get; private set; }
 
-    [SerializeField] private TextMeshProUGUI dnaTxt;
+    [SerializeField] private TextMeshProUGUI inGameDnaTxt;
+    [SerializeField] private TextMeshProUGUI upgradeScreenDnaTxt;
     private int dnaCount = 0;
 
     private void Awake() {
@@ -13,12 +14,18 @@ public class DNACounter : MonoBehaviour
         UpdateText();
     }
 
-    public void AddDNA() {
-        dnaCount++;
+    public void AddDNA(int amount) {
+        dnaCount += amount;
+        UpdateText();
+    }
+
+    public void SubtractDNA(int amount) {
+        dnaCount -= amount;
         UpdateText();
     }
 
     private void UpdateText() {
-        dnaTxt.text = dnaCount.ToString();
+        inGameDnaTxt.text = dnaCount.ToString();
+        upgradeScreenDnaTxt.text = dnaCount.ToString();
     }
 }
