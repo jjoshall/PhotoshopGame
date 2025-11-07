@@ -10,12 +10,6 @@ public class RockCollision : MonoBehaviour
     [Header("Hit Stop Settings")]
     [SerializeField] private float hitStopDuration = 0.1f;
 
-    [Header("Score Settings")]
-    [SerializeField] private int scorePerEnemy = 1;
-    [SerializeField] private TextMeshProUGUI scoreNum;
-    private int score = 0;
-    public int CurrentScore => score;
-
     [Header("Syringe Sprites")]
     [SerializeField] private int enemiesKilled = 0;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -35,9 +29,6 @@ public class RockCollision : MonoBehaviour
         if (collision.CompareTag("Enemy")) {
             enemiesKilled++;
             SetSyringeSpriteState(enemiesKilled);
-
-            score += scorePerEnemy;
-            scoreNum.text = score.ToString();
 
             PlayerDeathBar.Instance.AddHealth(healthToAddAmt);
 
