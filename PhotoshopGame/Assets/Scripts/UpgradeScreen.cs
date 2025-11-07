@@ -41,7 +41,7 @@ public class UpgradeScreen : MonoBehaviour
         Debug.Log("Start Wave Button Pressed");
         player.SetActive(true);
 
-        StartCoroutine(RockSpawner.Instance.WaveLoop());
+        RockSpawner.Instance.CallWaveCoroutine();
 
         gameObject.SetActive(false);
     }

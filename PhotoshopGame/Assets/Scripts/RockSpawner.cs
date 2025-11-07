@@ -40,10 +40,14 @@ public class RockSpawner : MonoBehaviour
     private void Start() {
         waveIncomingTxt.SetActive(false);
         waveNumTxt.text = "";
+        CallWaveCoroutine();
+    }
+
+    public void CallWaveCoroutine() {
         StartCoroutine(WaveLoop());
     }
 
-    public IEnumerator WaveLoop() {
+    private IEnumerator WaveLoop() {
         // Show wave incoming text
         //waveIncomingTxt.SetActive(true);
         //yield return new WaitForSeconds(3f);
