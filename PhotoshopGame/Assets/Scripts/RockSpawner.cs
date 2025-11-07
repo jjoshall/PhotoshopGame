@@ -10,6 +10,7 @@ public class RockSpawner : MonoBehaviour
     [SerializeField] private GameObject prefabToSpawn;
     private readonly List<GameObject> activeEnemies = new List<GameObject>();
     [SerializeField] private GameObject player;
+    [SerializeField] private PlayerMovement playerMovement;
 
     [Header("Spawn Settings")]
     [SerializeField] private float spawnInterval = 2f;
@@ -52,6 +53,8 @@ public class RockSpawner : MonoBehaviour
         //waveIncomingTxt.SetActive(true);
         //yield return new WaitForSeconds(3f);
         //waveIncomingTxt.SetActive(false);
+
+        playerMovement.ResetLaunchPermission();
 
         // Start wave
         currentWave++;

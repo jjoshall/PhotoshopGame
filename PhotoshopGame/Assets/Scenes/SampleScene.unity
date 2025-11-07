@@ -6400,6 +6400,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 960219533}
     - target: {fileID: 4089432515779075432, guid: 9bd21a73b24e1d147bdd08cdffaf519e, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1997005719}
+    - target: {fileID: 4089432515779075432, guid: 9bd21a73b24e1d147bdd08cdffaf519e, type: 3}
       propertyPath: waveIncomingTxt
       value: 
       objectReference: {fileID: 399343893}
